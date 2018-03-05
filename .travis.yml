@@ -74,22 +74,16 @@ script:
   - cmake --version
   - cmake -DCMAKE_PREFIX_PATH="$QT_PREFIX" -S "$SOURCE_DIR" -B "$BINARY_DIR"
   - cmake --build "$BINARY_DIR" --parallel 4 --config Release
-notifications:
-  irc:
-    on_success: change
-    on_failure: change
-    channels:
-      - chat.freenode.net#dwarftherapist
-    use_notice: true
 before_deploy:
   - ".travis/deploy.sh"
   - ".travis/$TRAVIS_OS_NAME/deploy.sh"
 deploy:
   provider: releases
   api_key:
-    secure: eeglXjGD3+a5eaOPZ6d/DZZEUByfP/7nskbs4NPjrFsUSJgzlJb9dkRgvdFr9W/i/QXMl+nEtqR36YDzxKO9qqoQEWXfRgh75qYjPoDKeeQtZ3/IryArVRa7A8dW2KcV3JBUyp+NOMeAe054sRIR+K4RLSKxZjwdVJUaPH5KpSC4ahsAZTJPHPXREYLUDzOAT5BFqYLOhzcsNniA1vJcxP0fQu25D+lRw/U87xilj3xUJtmTtmwsKHBODtMLuABR8auXIGmcLosUmvsEEIcDiHJo3QsKNDIW/WrCYmVmsvxremJc4Hl4aMbWCfRDXZ6pmJc41ZqswgLoYh4I9+NTl6CYbhST8i9VuoAxmL/gdyoovusFvOvqCPO9mXAmWfxIKoEZeUXNR8DrZrNCpp2OYpI3XA+LRUzjeX7K4xZCBoADQC5I9C8nGncj3jLdfxj4V4qAan4Phk6jrs0y8xiGHiSHOGaXSfXXL5yNArF95U2amzqt1HIh7KjjsJaigr2RwRg/6ircpSVUm4vj/7Vn4jOHncgApfj8n6Bzv65amwcuINCUlJPrA+EM2/LKCj9/ebXuC4rd0n8w9vEUY3I19UoN12Gwz+4BFIZgdNAa+38jFRV2fqgwsb+5c2gqWZZVl112SEhQUpCff5Ce76/7UHFZ5J9SPq8fMuimZVM3zbA=
+    secure: rHA/q12iYbGRrwQTak2aAV38I1MHLpvA228KoNA6UcyPtfcLtjrfoKDIGa+Li/0onwUTCjyDgObMdYXrq4A5sznL2ezec6oFHETY6u7xqoEj3ITKqcLUKqQMhQ3p3hwO+Q8u0CpuwmAgDyiSwP7WNnVz0XD3qhu9ZEdM12wG0tp9IoyzayGePwDja12uDlESJtOof5HgVgq6rm2xvVFmQUK8Nzfe8o2mkSLVOjCoWGiP4YJtuE7lPOVF0AfzoxfRCY6UkELTJFaVADWWr8FRq8LPioej2zNToIvRw/5qnIfLRfINj2+Oyg5SVOdyT70J1I/1BH3YrPHJGlAsWiWvgthj8XR8TaLZuj6KTphla4cxgWNo11ozbykFDtW7ssbp8Xobos041YhDT9swkkrT+TQPWHAs3fvlOol9klLBjAeYUYQVgoFHykg9WeHsGLW5uyMCPEj38CM6Ma6X/TyGAPgWo6/QcrTfGk4rd8h3Z9wD2614WY5VZDjftggFqmotgkCybtvPg5EjHlNnq4tZ+RzR5tTzxCbTpCaVcGXKemo1QGn70HMcZdSFBpcqIM8sZISAjsEX3VYnOfCLightlvokl9KnVGRA3w26yem9+hfIWvFfahzF0RYJ8kQIVnqsQj8S5qocpaoT0g8THInDzeYmgsP/shCWgEzfEQ7jJ2I=
   file_glob: true
   file: DwarfTherapist-*.*
   skip_cleanup: true
   on:
-    tags: true
+    repo: cvuchener/Dwarf-Therapist
+    branch: deploy-test
